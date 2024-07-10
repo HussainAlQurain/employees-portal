@@ -1,0 +1,10 @@
+version: '3'
+services:
+  backend:
+    image: hussain50/employee-service
+    ports:
+      - "8080:8080"
+  frontend:
+    image: hussain50/employee-frontend
+    ports:
+      - "80:80"
