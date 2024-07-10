@@ -1,17 +1,26 @@
-<div>
-    <h2>Add Employee</h2>
-    <form (ngSubmit)="addEmployee()">
-      <label>First Name:</label>
-      <input [(ngModel)]="employee.fname" name="fname" required>
-      <label>Last Name:</label>
-      <input [(ngModel)]="employee.lname" name="lname" required>
-      <label>Phone:</label>
-      <input [(ngModel)]="employee.phone" name="phone" required>
-      <label>Email:</label>
-      <input [(ngModel)]="employee.email" name="email" required>
-      <label>Salary:</label>
-      <input [(ngModel)]="employee.salary" name="salary" type="number" required>
-      <button type="submit">Add</button>
-    </form>
-  </div>
-  
+<div class="employee-form">
+  <h2>Add Employee</h2>
+  <form (ngSubmit)="addEmployee()" #employeeForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.fname" name="fname" required pattern="[a-zA-Z]*">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="employee.lname" name="lname" required pattern="[a-zA-Z]*">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input matInput [(ngModel)]="employee.phone" name="phone" required pattern="[0-9]*" minlength="10" maxlength="10">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="employee.email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Salary</mat-label>
+      <input matInput [(ngModel)]="employee.salary" name="salary" type="number" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">Add</button>
+  </form>
+</div>

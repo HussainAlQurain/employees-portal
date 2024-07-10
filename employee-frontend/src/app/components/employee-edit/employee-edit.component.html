@@ -1,1 +1,31 @@
-<p>employee-edit works!</p>
+<div class="employee-form" *ngIf="employee">
+    <h2>Edit Employee</h2>
+    <form (ngSubmit)="updateEmployee()">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="employee.fname" name="fname" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="employee.lname" name="lname" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput [(ngModel)]="employee.phone" name="phone" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="employee.email" name="email" required email pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel">
+        <mat-error *ngIf="email.invalid && email.touched">
+          Please enter a valid email address.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput [(ngModel)]="employee.salary" name="salary" type="number" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Update</button>
+      <button mat-raised-button color="warn" (click)="cancel">Cancel</button>
+    </form>
+  </div>
+  

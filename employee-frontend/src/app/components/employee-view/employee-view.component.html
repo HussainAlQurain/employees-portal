@@ -1,1 +1,29 @@
-<p>employee-view works!</p>
+@if (employee) {
+    <div class="employee-details">
+        <h2>Employee Details</h2>
+        <div>
+          <label>First Name:</label>
+          <span>{{ employee.fname }}</span>
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <span>{{ employee.lname }}</span>
+        </div>
+        <div>
+          <label>Phone:</label>
+          <span>{{ employee.phone }}</span>
+        </div>
+        <div>
+          <label>Email:</label>
+          <span>{{ employee.email }}</span>
+        </div>
+        <div>
+          <label>Salary:</label>
+          <span>{{ employee.salary }}</span>
+        </div>
+        <button mat-raised-button color="primary" routerLink="/">Back</button>
+      </div>
+}
+@else {
+    <h2>Employee not found</h2>
+}
